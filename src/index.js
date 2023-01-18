@@ -1,18 +1,33 @@
+import { legacy_createStore } from "redux";
+
 const form = document.querySelector("form");
 const input = document.querySelector("input");
 const ul = document.querySelector("ul");
 
-const createTodo = (todo) => {
-  const li = document.createElement("li");
-  li.innerText = todo;
-  ul.appendChild(li);
+const ADD_TODO = "ADD_TODO";
+
+const REMOVE_TODO = "REMOVE_TODO";
+
+const reducer = (state = [], action) => {
+  switch (action.type) {
+    case ADD_TODO:
+      return [...state, { text: action.text }];
+    case REMOVE_TODO:
+      return [];
+    default:
+      return state;
+  }
 };
+
+const store = legacy_createStore(reducer);
+
+store.subscribe(() => console.log(store.getState()));
 
 const onSubmit = (e) => {
   e.preventDefault();
   const todo = input.value;
   input.value = "";
-  createTodo(todo);
+  store.dispatch({ type: ADD_TODO, text: todo });
 };
 
 form.addEventListener("submit", onSubmit);
