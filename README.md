@@ -8,4 +8,10 @@
 5. Subscribe
 
 ## 이후 작업 사항
-1. 리팩토링
+리팩토링
+
+## 기타
+각 브랜치 별로 학습사항 따로 커밋
+1. 카운터 앱
+2. Todo-List (Vanilla)
+3. Todo-List (React)
